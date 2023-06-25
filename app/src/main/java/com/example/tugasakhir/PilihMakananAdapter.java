@@ -63,7 +63,7 @@ public class PilihMakananAdapter extends RecyclerView.Adapter<PilihMakananAdapte
         void bind(MenuMakanan menu){
             binding.tvNamaMenu.setText(menu.getNama_menu());
             binding.tvDescMenu.setText(menu.getDeskripsi_menu());
-            Glide.with(ctx).load("http://10.0.2.2/TA-service/imagesMenu/"+ menu.getNama_menu().replace(" ", "") +".jpg").into(binding.imageViewMenu);
+            Glide.with(ctx).load("https://github.com/FlorenciaNatasya/BackendTA/imagesMenu/"+ menu.getNama_menu().replace(" ", "") +".jpg").into(binding.imageViewMenu);
             binding.tvHargaMenu.setText(formatRupiah(Integer.parseInt(menu.getHarga_menu())));
 
             binding.buttonPlus.setOnClickListener(new View.OnClickListener() {
