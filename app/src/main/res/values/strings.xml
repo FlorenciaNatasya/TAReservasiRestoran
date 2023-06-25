@@ -12,7 +12,7 @@
         <item>Surabaya Barat</item>
         <item>Surabaya Tengah</item>
     </string-array>
-    <string name="url">http://10.0.2.2/TA-service/master.php</string>
+    <string name="url">https://github.com/FlorenciaNatasya/BackendTA/master.php</string>
     <string-array name="jenisvoucher">
         <item>Diskon</item>
         <item>Cashback</item>
