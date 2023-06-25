@@ -222,7 +222,7 @@ public class EditProfileDanJadwalBukaRestoran extends AppCompatActivity {
                             if (arrResto != null) {
                                 for (int i = 0; i < arrResto.size(); i++) {
                                     if(arrResto.get(i).getId_restoran().equalsIgnoreCase(idresto)){
-                                        Glide.with(EditProfileDanJadwalBukaRestoran.this).asBitmap().load("http://10.0.2.2/TA-service/imagesResto/"+ arrResto.get(i).getNama_restoran().replace(" ", "") + "BagianDepan" +".jpg").into(new CustomTarget<Bitmap>() {
+                                        Glide.with(EditProfileDanJadwalBukaRestoran.this).asBitmap().load("https://github.com/FlorenciaNatasya/BackendTA/imagesResto/"+ arrResto.get(i).getNama_restoran().replace(" ", "") + "BagianDepan" +".jpg").into(new CustomTarget<Bitmap>() {
                                             @Override
                                             public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
                                                 binding.imageView21.setImageBitmap(resource);
@@ -232,7 +232,7 @@ public class EditProfileDanJadwalBukaRestoran extends AppCompatActivity {
                                             public void onLoadCleared(@Nullable Drawable placeholder) {
                                             }
                                         });
-                                        Glide.with(EditProfileDanJadwalBukaRestoran.this).asBitmap().load("http://10.0.2.2/TA-service/imagesResto/"+ arrResto.get(i).getNama_restoran().replace(" ", "") + "BagianDalam" +".jpg").into(new CustomTarget<Bitmap>() {
+                                        Glide.with(EditProfileDanJadwalBukaRestoran.this).asBitmap().load("https://github.com/FlorenciaNatasya/BackendTA/imagesResto/"+ arrResto.get(i).getNama_restoran().replace(" ", "") + "BagianDalam" +".jpg").into(new CustomTarget<Bitmap>() {
                                             @Override
                                             public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
                                                 binding.imageView23.setImageBitmap(resource);
@@ -242,7 +242,7 @@ public class EditProfileDanJadwalBukaRestoran extends AppCompatActivity {
                                             public void onLoadCleared(@Nullable Drawable placeholder) {
                                             }
                                         });
-                                        Glide.with(EditProfileDanJadwalBukaRestoran.this).asBitmap().load("http://10.0.2.2/TA-service/imagesResto/"+ arrResto.get(i).getNama_restoran().replace(" ", "") + "BagianRuangan" +".jpg").into(new CustomTarget<Bitmap>() {
+                                        Glide.with(EditProfileDanJadwalBukaRestoran.this).asBitmap().load("https://github.com/FlorenciaNatasya/BackendTA/imagesResto/"+ arrResto.get(i).getNama_restoran().replace(" ", "") + "BagianRuangan" +".jpg").into(new CustomTarget<Bitmap>() {
                                             @Override
                                             public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
                                                 binding.imageView24.setImageBitmap(resource);
