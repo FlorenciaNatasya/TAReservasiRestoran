@@ -63,7 +63,7 @@ public class PesananSayaAdapter extends RecyclerView.Adapter<PesananSayaAdapter.
         }
 
         void bind(PesananSayaClass psc){
-            Glide.with(ctx).load("http://10.0.2.2/TA-service/imagesResto/"+ psc.getNama_restoran().replace(" ", "") + "BagianDepan" +".jpg").into(binding.imageView13);
+            Glide.with(ctx).load("https://github.com/FlorenciaNatasya/BackendTA/imagesResto/"+ psc.getNama_restoran().replace(" ", "") + "BagianDepan" +".jpg").into(binding.imageView13);
             binding.textViewNamaRestoYangDipesan.setText(psc.getNama_restoran());
             if(psc.getTanggal_reservasi().substring(3,5).equalsIgnoreCase("01")){
                 binding.textViewKeteranganPesanan.setText("Reservasi pada tanggal " + psc.getTanggal_reservasi().substring(0,2) + " Januari " + psc.getTanggal_reservasi().substring(6) + " pukul " + psc.getJam_reservasi());
