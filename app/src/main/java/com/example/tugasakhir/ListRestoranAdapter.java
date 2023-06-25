@@ -65,7 +65,7 @@ public class ListRestoranAdapter extends RecyclerView.Adapter<ListRestoranAdapte
         void bind(Restoran resto){
             binding.textViewNamaRestoran.setText(resto.getNama_restoran());
             binding.textViewAlamatRestoran.setText(resto.getAlamat_restoran());
-            Glide.with(ctx).load("http://10.0.2.2/TA-service/imagesResto/"+ resto.getNama_restoran().replace(" ", "") + "BagianDepan" +".jpg").into(binding.imageView8);
+            Glide.with(ctx).load("https://github.com/FlorenciaNatasya/BackendTA/imagesResto/"+ resto.getNama_restoran().replace(" ", "") + "BagianDepan" +".jpg").into(binding.imageView8);
 
             float rating = 0;
             int jmlhcustrat = 0;
