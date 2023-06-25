@@ -65,7 +65,7 @@ public class EditMenuMakanan extends AppCompatActivity {
         }
         binding.txtEditDeskripsiMenu.setText(mm.getDeskripsi_menu());
         binding.txtEditHargaMenu.setText(mm.getHarga_menu());
-        Glide.with(this).load("http://10.0.2.2/TA-service/imagesMenu/"+ mm.getNama_menu().replace(" ", "") + idresto +".jpg").into(binding.imageView3);
+        Glide.with(this).load("https://github.com/FlorenciaNatasya/BackendTA/imagesMenu/"+ mm.getNama_menu().replace(" ", "") + idresto +".jpg").into(binding.imageView3);
 
         binding.buttonSelectImageEditMenu.setOnClickListener(new View.OnClickListener() {
             @Override
