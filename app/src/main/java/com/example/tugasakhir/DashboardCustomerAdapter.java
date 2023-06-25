@@ -61,7 +61,7 @@ public class DashboardCustomerAdapter extends RecyclerView.Adapter<DashboardCust
         }
 
         void bind(VoucherRestoran vr){
-            Glide.with(ctx).load("http://10.0.2.2/TA-service/imagesResto/"+ "Banner"+ vr.getKode_voucher() +".jpg").into(binding.imageView20);
+            Glide.with(ctx).load("https://github.com/FlorenciaNatasya/BackendTA/imagesResto/"+ "Banner"+ vr.getKode_voucher() +".jpg").into(binding.imageView20);
         }
     }
 
