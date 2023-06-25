@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditIdentitasRestoran">
+
+  <TextView
+      android:id="@+id/textView41"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="15dp"
+      android:layout_marginTop="25dp"
+      android:text="Username : "
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <EditText
+      android:id="@+id/textEditUsernameRestoran"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="20dp"
+      android:layout_marginTop="15dp"
+      android:ems="10"
+      android:inputType="textPersonName"
+      app:layout_constraintStart_toEndOf="@+id/textView41"
+      app:layout_constraintTop_toTopOf="parent" />
+
+  <EditText
+      android:id="@+id/textEditNamaRestoran"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="20dp"
+      android:layout_marginTop="20dp"
+      android:ems="10"
+      android:inputType="textPersonName"
+      app:layout_constraintStart_toEndOf="@+id/textView49"
+      app:layout_constraintTop_toBottomOf="@+id/textEditUsernameRestoran" />
+
+  <TextView
+      android:id="@+id/textView49"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="41dp"
+      android:layout_marginTop="50dp"
+      android:text="Nama : "
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/textView41" />
+
+  <TextView
+      android:id="@+id/textView54"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="44dp"
+      android:layout_marginTop="45dp"
+      android:text="Email : "
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/textView49" />
+
+  <Button
+      android:id="@+id/buttonSubmitEditProfileRestoran"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:backgroundTint="#2196F3"
+      android:text="Submit"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"
+      app:layout_constraintHorizontal_bias="0.0"
+      app:layout_constraintStart_toStartOf="parent" />
+
+  <TextView
+      android:id="@+id/textView48"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="17dp"
+      android:layout_marginTop="40dp"
+      android:text="Password : "
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/textView54" />
+
+  <EditText
+      android:id="@+id/textEditPasswordRestoran"
+      android:layout_width="212dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="20dp"
+      android:layout_marginTop="20dp"
+      android:ems="10"
+      android:inputType="textPassword"
+      app:layout_constraintStart_toEndOf="@+id/textView48"
+      app:layout_constraintTop_toBottomOf="@+id/textEditEmailRestoran" />
+
+  <TextView
+      android:id="@+id/textView58"
+      android:layout_width="291dp"
+      android:layout_height="28dp"
+      android:layout_marginStart="110dp"
+      android:layout_marginTop="2dp"
+      android:text="* Jika tidak ingin mengubah password maka kolom ini tidak perlu diisi"
+      android:textSize="12sp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/textEditPasswordRestoran" />
+
+  <TextView
+      android:id="@+id/textView63"
+      android:layout_width="291dp"
+      android:layout_height="28dp"
+      android:layout_marginStart="110dp"
+      android:text="* Jika tidak ingin mengubah password maka kolom ini tidak perlu diisi"
+      android:textSize="12sp"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/textEditConfirmPasswordRestoran" />
+
+  <TextView
+      android:id="@+id/textView60"
+      android:layout_width="79dp"
+      android:layout_height="40dp"
+      android:layout_marginStart="15dp"
+      android:layout_marginTop="70dp"
+      android:text="Konfirmasi Password : "
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/textView48" />
+
+  <EditText
+      android:id="@+id/textEditConfirmPasswordRestoran"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="15dp"
+      android:layout_marginTop="20dp"
+      android:ems="10"
+      android:inputType="textPassword"
+      app:layout_constraintStart_toEndOf="@+id/textView60"
+      app:layout_constraintTop_toBottomOf="@+id/textView58" />
+
+  <EditText
+      android:id="@+id/textEditEmailRestoran"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="20dp"
+      android:layout_marginTop="20dp"
+      android:ems="10"
+      android:inputType="textPersonName"
+      app:layout_constraintStart_toEndOf="@+id/textView54"
+      app:layout_constraintTop_toBottomOf="@+id/textEditNamaRestoran" />
+
+  <TextView
+      android:id="@+id/textView91"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="38dp"
+      android:layout_marginTop="62dp"
+      android:text="Alamat : "
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/textView60" />
+
+  <TextView
+      android:id="@+id/textView92"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="38dp"
+      android:layout_marginTop="37dp"
+      android:text="Daerah : "
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintTop_toBottomOf="@+id/textView91" />
+
+  <EditText
+      android:id="@+id/textEditAlamatRestoran"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="17dp"
+      android:layout_marginTop="20dp"
+      android:ems="10"
+      android:inputType="textPersonName"
+      app:layout_constraintStart_toEndOf="@+id/textView91"
+      app:layout_constraintTop_toBottomOf="@+id/textView63" />
+
+  <Spinner
+      android:id="@+id/spinnerEditDaerahRestoran"
+      android:layout_width="210dp"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="17dp"
+      android:layout_marginTop="20dp"
+      android:entries="@array/filterlokasi"
+      app:layout_constraintStart_toEndOf="@+id/textView92"
+      app:layout_constraintTop_toBottomOf="@+id/textEditAlamatRestoran" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

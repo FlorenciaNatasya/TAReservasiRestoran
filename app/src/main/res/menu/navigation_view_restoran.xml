@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_edit_profile_restoran"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="Edit Profile"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/item_master_menu"
+        android:icon="@drawable/ic_baseline_menu_book_24"
+        android:title="Master Menu"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/item_master_fasilitas"
+        android:icon="@drawable/ic_baseline_room_preferences_24"
+        android:title="Master Fasilitas"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/item_master_voucher"
+        android:icon="@drawable/ic_baseline_discount_24"
+        android:title="Master Voucher"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/item_list_pesanan"
+        android:icon="@drawable/ic_baseline_article_24"
+        android:title="List Pesanan"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/item_laporan_pendapatan_restoran"
+        android:title="Laporan Pendapatan" />
+    <item
+        android:id="@+id/item_laporan_transaksi"
+        android:title="Laporan Transaksi" />
+    <item
+        android:id="@+id/item_laporan_rating_review_restoran"
+        android:title="Laporan Rating Review" />
+    <item
+        android:id="@+id/item_laporan_makanan_terlaku"
+        android:title="Laporan Makanan Terlaku" />
+    <item
+        android:id="@+id/item_laporan_pelanggan_setia"
+        android:title="Laporan Pelanggan Setia" />
+</menu>

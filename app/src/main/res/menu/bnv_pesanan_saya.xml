@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_belum_diproses"
+        android:icon="@drawable/ic_baseline_query_builder_24"
+        android:title="Belum Diproses"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/item_diproses"
+        android:icon="@drawable/ic_baseline_published_with_changes_24"
+        android:title="Diproses"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/item_selesai"
+        android:icon="@drawable/ic_baseline_done_24"
+        android:title="Selesai"
+        app:showAsAction="withText" />
+</menu>

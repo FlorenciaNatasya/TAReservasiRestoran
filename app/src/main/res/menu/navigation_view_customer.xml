@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_dashboard_customer"
+        android:icon="@drawable/ic_baseline_dashboard_24"
+        android:title="Dashboard"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/item_edit_profile_customer"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:title="Edit Profile"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/item_form_reservasi"
+        android:icon="@drawable/ic_baseline_article_24"
+        android:title="Form Reservasi"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/item_list_resto"
+        android:icon="@drawable/ic_baseline_food_bank_24"
+        android:title="List Resto"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/item_chat_customer"
+        android:icon="@drawable/ic_baseline_chat_24"
+        android:title="Chat"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/item_pesanan_saya"
+        android:icon="@drawable/ic_baseline_format_list_bulleted_24"
+        android:title="Pesanan Saya"
+        app:showAsAction="withText" />
+</menu>

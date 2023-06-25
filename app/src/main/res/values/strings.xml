@@ -1,0 +1,60 @@
+<resources>
+    <string name="app_name">TugasAkhir</string>
+    <string-array name="role">
+        <item>Customer</item>
+        <item>Restoran</item>
+    </string-array>
+    <string-array name="filterlokasi">
+        <item></item>
+        <item>Surabaya Utara</item>
+        <item>Surabaya Selatan</item>
+        <item>Surabaya Timur</item>
+        <item>Surabaya Barat</item>
+        <item>Surabaya Tengah</item>
+    </string-array>
+    <string name="url">http://10.0.2.2/TA-service/master.php</string>
+    <string-array name="jenisvoucher">
+        <item>Diskon</item>
+        <item>Cashback</item>
+    </string-array>
+    <string-array name="jenispotongan">
+        <item>Nominal</item>
+        <item>Persen</item>
+    </string-array>
+    <string-array name="kategori">
+        <item>Restoran Halal</item>
+        <item>Restoran Non Halal</item>
+        <item>Restoran Western</item>
+        <item>Restoran Chinese</item>
+        <item>Restoran Japanese</item>
+        <item>Restoran Korean</item>
+        <item>Restoran Seafood</item>
+    </string-array>
+    <string-array name="bulan">
+        <item>Januari</item>
+        <item>Februari</item>
+        <item>Maret</item>
+        <item>April</item>
+        <item>Mei</item>
+        <item>Juni</item>
+        <item>Juli</item>
+        <item>Agustus</item>
+        <item>September</item>
+        <item>Oktober</item>
+        <item>November</item>
+        <item>Desember</item>
+    </string-array>
+    <string-array name="tahun">
+        <item>2023</item>
+        <item>2024</item>
+        <item>2025</item>
+        <item>2026</item>
+        <item>2027</item>
+        <item>2028</item>
+        <item>2029</item>
+        <item>2030</item>
+    </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+</resources>

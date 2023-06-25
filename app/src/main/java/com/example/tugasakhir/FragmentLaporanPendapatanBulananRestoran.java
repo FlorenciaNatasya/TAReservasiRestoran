@@ -1,0 +1,324 @@
+package com.example.tugasakhir;
+
+import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.tugasakhir.databinding.FragmentLaporanPendapatanBulananRestoranBinding;
+import com.example.tugasakhir.databinding.FragmentLaporanPendapatanHarianRestoranBinding;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link FragmentLaporanPendapatanBulananRestoran#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class FragmentLaporanPendapatanBulananRestoran extends Fragment {
+
+    FragmentLaporanPendapatanBulananRestoranBinding binding;
+    private static final String ARG_PARAM1 = "id_restoran";
+    private String id_restoran;
+    String bulan;
+    ArrayList<HeaderTransaksi> arrHT = new ArrayList<>();
+    ArrayList<HeaderTransaksi> arrHT2 = new ArrayList<>();
+    int total = 0;
+
+    public FragmentLaporanPendapatanBulananRestoran() {
+        // Required empty public constructor
+    }
+
+    public static FragmentLaporanPendapatanBulananRestoran newInstance(String id_restoran) {
+        FragmentLaporanPendapatanBulananRestoran fragment = new FragmentLaporanPendapatanBulananRestoran();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, id_restoran);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            id_restoran = getArguments().getString(ARG_PARAM1);
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+//        return inflater.inflate(R.layout.fragment_laporan_pendapatan_bulanan_restoran, container, false);
+        binding = FragmentLaporanPendapatanBulananRestoranBinding.inflate(inflater, container, false);
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM");
+        String date = dateFormat.format(c.getTime());
+        binding.textViewBulanLaporanPendapatanRestoran.setText(date);
+
+        binding.spinnerLaporanPendapatanBulananRestoran.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                binding.textViewBulanLaporanPendapatanRestoran.setText(binding.spinnerLaporanPendapatanBulananRestoran.getSelectedItem().toString());
+                if(binding.spinnerLaporanPendapatanBulananRestoran.getSelectedItem().toString().equalsIgnoreCase("Januari")){
+                    bulan = "01";
+                }
+                else if(binding.spinnerLaporanPendapatanBulananRestoran.getSelectedItem().toString().equalsIgnoreCase("Februari")){
+                    bulan = "02";
+                }
+                else if(binding.spinnerLaporanPendapatanBulananRestoran.getSelectedItem().toString().equalsIgnoreCase("Maret")){
+                    bulan = "03";
+                }
+                else if(binding.spinnerLaporanPendapatanBulananRestoran.getSelectedItem().toString().equalsIgnoreCase("April")){
+                    bulan = "04";
+                }
+                else if(binding.spinnerLaporanPendapatanBulananRestoran.getSelectedItem().toString().equalsIgnoreCase("Mei")){
+                    bulan = "05";
+                }
+                else if(binding.spinnerLaporanPendapatanBulananRestoran.getSelectedItem().toString().equalsIgnoreCase("Juni")){
+                    bulan = "06";
+                }
+                else if(binding.spinnerLaporanPendapatanBulananRestoran.getSelectedItem().toString().equalsIgnoreCase("Juli")){
+                    bulan = "07";
+                }
+                else if(binding.spinnerLaporanPendapatanBulananRestoran.getSelectedItem().toString().equalsIgnoreCase("Agustus")){
+                    bulan = "08";
+                }
+                else if(binding.spinnerLaporanPendapatanBulananRestoran.getSelectedItem().toString().equalsIgnoreCase("September")){
+                    bulan = "09";
+                }
+                else if(binding.spinnerLaporanPendapatanBulananRestoran.getSelectedItem().toString().equalsIgnoreCase("Oktober")){
+                    bulan = "10";
+                }
+                else if(binding.spinnerLaporanPendapatanBulananRestoran.getSelectedItem().toString().equalsIgnoreCase("November")){
+                    bulan = "11";
+                }
+                else if(binding.spinnerLaporanPendapatanBulananRestoran.getSelectedItem().toString().equalsIgnoreCase("Desember")){
+                    bulan = "12";
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        setRVLaporanPendapatanBulanan();
+
+        binding.buttonSetBulanLaporanPendapatanrestoran.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setRVLaporanPendapatanHarianSetelahSetBulan();
+            }
+        });
+    }
+
+    private void setRVLaporanPendapatanBulanan(){
+        binding.rvLaporanPendapatanBulananRestoran.setHasFixedSize(true);
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                "http://10.0.2.2/TA-service/master.php",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println(response);
+
+                        try {
+                            JSONObject jsonobject = new JSONObject(response);
+                            JSONArray arrtemp = jsonobject.getJSONArray("datatransaksi");
+                            for (int i = 0; i <= arrtemp.length()-1; i++) {
+                                JSONObject tempMenu = arrtemp.getJSONObject(i);
+                                HeaderTransaksi ht = new HeaderTransaksi(
+                                        tempMenu.getString("id_htrans_reservasi"),
+                                        tempMenu.getString("id_customer"),
+                                        tempMenu.getString("nama_client"),
+                                        tempMenu.getString("nomor_telepon_client"),
+                                        tempMenu.getString("tanggal_reservasi"),
+                                        tempMenu.getString("jam_reservasi"),
+                                        tempMenu.getString("jumlah_orang"),
+                                        tempMenu.getString("note_transaksi"),
+                                        tempMenu.getString("total_harga"),
+                                        tempMenu.getString("id_restoran"),
+                                        tempMenu.getString("status_pesanan"));
+                                arrHT.add(ht);
+                            }
+
+                            for (int i = 0; i < arrHT.size(); i++) {
+                                if(arrHT.get(i).getId_restoran().equalsIgnoreCase(id_restoran) && arrHT.get(i).getStatus_pesanan().equalsIgnoreCase("Selesai")){
+                                    HeaderTransaksi ht = new HeaderTransaksi(arrHT.get(i).getId_htrans_reservasi(), arrHT.get(i).getId_customer(), arrHT.get(i).getNama_client(), arrHT.get(i).getNomor_telepon_client(), arrHT.get(i).getTanggal_reservasi(), arrHT.get(i).getJam_reservasi(), arrHT.get(i).getJumlah_orang(), arrHT.get(i).getNote_transaksi(), arrHT.get(i).getTotal_harga(), arrHT.get(i).getId_restoran(), arrHT.get(i).getStatus_pesanan());
+                                    arrHT2.add(ht);
+                                }
+                            }
+
+                            int totalbulanan = 0;
+                            int totaltrans = 0;
+                            ArrayList<HeaderTransaksi> arrHT3 = new ArrayList<>();
+                            for (int i = 0; i < arrHT2.size(); i++) {
+                                if(arrHT3.size() <= 0){
+                                    HeaderTransaksi ht = new HeaderTransaksi("1", arrHT2.get(i).getId_customer(), arrHT2.get(i).getNama_client(), arrHT2.get(i).getNomor_telepon_client(), arrHT2.get(i).getTanggal_reservasi(), arrHT2.get(i).getJam_reservasi(), arrHT2.get(i).getJumlah_orang(), arrHT2.get(i).getNote_transaksi(), arrHT2.get(i).getTotal_harga(), arrHT2.get(i).getId_restoran(), arrHT2.get(i).getStatus_pesanan());
+                                    arrHT3.add(ht);
+                                }
+                                else{
+                                    boolean adakmbr = false;
+                                    for (int j = 0; j < arrHT3.size(); j++) {
+                                        if(arrHT2.get(i).getTanggal_reservasi().substring(3,5).equalsIgnoreCase(arrHT3.get(j).getTanggal_reservasi().substring(3,5))){
+                                            totalbulanan = Integer.parseInt(arrHT3.get(j).getTotal_harga());
+                                            totalbulanan += Integer.parseInt(arrHT2.get(i).getTotal_harga());
+                                            arrHT3.get(j).setTotal_harga(String.valueOf(totalbulanan));
+                                            totaltrans = Integer.parseInt(arrHT3.get(j).getId_htrans_reservasi()) + 1;
+                                            arrHT3.get(j).setId_htrans_reservasi(String.valueOf(totaltrans));
+                                            adakmbr = true;
+                                        }
+//                                        else{
+//                                            HeaderTransaksi ht = new HeaderTransaksi(arrHT2.get(i).getId_htrans_reservasi(), arrHT2.get(i).getId_customer(), arrHT2.get(i).getNama_client(), arrHT2.get(i).getNomor_telepon_client(), arrHT2.get(i).getTanggal_reservasi(), arrHT2.get(i).getJam_reservasi(), arrHT2.get(i).getJumlah_orang(), arrHT2.get(i).getNote_transaksi(), arrHT2.get(i).getTotal_harga(), arrHT2.get(i).getId_restoran(), arrHT2.get(i).getStatus_pesanan());
+//                                            arrHT3.add(ht);
+//                                        }
+                                    }
+//                                    if(idxJ >= 0){
+//                                        totalbulanan = Integer.parseInt(arrHT3.get(idxJ).getTotal_harga());
+//                                        totalbulanan += Integer.parseInt(arrHT2.get(i).getTotal_harga());
+//                                        arrHT3.get(idxJ).setTotal_harga(String.valueOf(totalbulanan));
+//                                        totaltrans = Integer.parseInt(arrHT3.get(idxJ).getId_htrans_reservasi()) + 1;
+//                                        arrHT3.get(idxJ).setId_htrans_reservasi(String.valueOf(totaltrans));
+//                                    }
+                                    if(adakmbr == false) {
+                                        HeaderTransaksi ht = new HeaderTransaksi("1", arrHT2.get(i).getId_customer(), arrHT2.get(i).getNama_client(), arrHT2.get(i).getNomor_telepon_client(), arrHT2.get(i).getTanggal_reservasi(), arrHT2.get(i).getJam_reservasi(), arrHT2.get(i).getJumlah_orang(), arrHT2.get(i).getNote_transaksi(), arrHT2.get(i).getTotal_harga(), arrHT2.get(i).getId_restoran(), arrHT2.get(i).getStatus_pesanan());
+                                        arrHT3.add(ht);
+                                    }
+                                }
+                            }
+
+                            binding.rvLaporanPendapatanBulananRestoran.setLayoutManager(new LinearLayoutManager(getActivity()));
+                            LaporanPendapatanRestoranBulananAdapter adapter = new LaporanPendapatanRestoranBulananAdapter(arrHT3);
+                            binding.rvLaporanPendapatanBulananRestoran.setAdapter(adapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }
+        ) {
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("function", "selectHTransaksi");
+                return params;
+            }
+
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(stringRequest);
+    }
+
+    private void setRVLaporanPendapatanHarianSetelahSetBulan(){
+        arrHT.clear();
+        arrHT2.clear();
+        binding.rvLaporanPendapatanBulananRestoran.setHasFixedSize(true);
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                "http://10.0.2.2/TA-service/master.php",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        System.out.println(response);
+
+                        try {
+                            JSONObject jsonobject = new JSONObject(response);
+                            JSONArray arrtemp = jsonobject.getJSONArray("datatransaksi");
+                            for (int i = 0; i <= arrtemp.length()-1; i++) {
+                                JSONObject tempMenu = arrtemp.getJSONObject(i);
+                                HeaderTransaksi ht = new HeaderTransaksi(
+                                        tempMenu.getString("id_htrans_reservasi"),
+                                        tempMenu.getString("id_customer"),
+                                        tempMenu.getString("nama_client"),
+                                        tempMenu.getString("nomor_telepon_client"),
+                                        tempMenu.getString("tanggal_reservasi"),
+                                        tempMenu.getString("jam_reservasi"),
+                                        tempMenu.getString("jumlah_orang"),
+                                        tempMenu.getString("note_transaksi"),
+                                        tempMenu.getString("total_harga"),
+                                        tempMenu.getString("id_restoran"),
+                                        tempMenu.getString("status_pesanan"));
+                                arrHT.add(ht);
+                            }
+
+                            for (int i = 0; i < arrHT.size(); i++) {
+                                if(arrHT.get(i).getId_restoran().equalsIgnoreCase(id_restoran) && arrHT.get(i).getTanggal_reservasi().substring(3,5).equalsIgnoreCase(bulan)){
+                                    HeaderTransaksi ht = new HeaderTransaksi(arrHT.get(i).getId_htrans_reservasi(), arrHT.get(i).getId_customer(), arrHT.get(i).getNama_client(), arrHT.get(i).getNomor_telepon_client(), arrHT.get(i).getTanggal_reservasi(), arrHT.get(i).getJam_reservasi(), arrHT.get(i).getJumlah_orang(), arrHT.get(i).getNote_transaksi(), arrHT.get(i).getTotal_harga(), arrHT.get(i).getId_restoran(), arrHT.get(i).getStatus_pesanan());
+                                    arrHT2.add(ht);
+                                    total += Integer.parseInt(arrHT.get(i).getTotal_harga());
+                                }
+                            }
+
+                            binding.rvLaporanPendapatanBulananRestoran.setLayoutManager(new LinearLayoutManager(getActivity()));
+                            LaporanPendapatanRestoranBulananAdapter adapter = new LaporanPendapatanRestoranBulananAdapter(arrHT2);
+                            binding.rvLaporanPendapatanBulananRestoran.setAdapter(adapter);
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        }
+        ) {
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("function", "selectHTransaksi");
+                return params;
+            }
+
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        requestQueue.add(stringRequest);
+    }
+
+    public String formatRupiah(int number){
+        Locale localeID = new Locale("in", "ID");
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+        return formatRupiah.format(number);
+    }
+}
