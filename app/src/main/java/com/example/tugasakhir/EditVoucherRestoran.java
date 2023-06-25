@@ -81,7 +81,7 @@ public class EditVoucherRestoran extends AppCompatActivity {
         binding.textEditKuotaVoucher.setText(vr.getKuota_voucher());
         binding.textEditTanggalAwalVouch.setText(ta);
         binding.textEditTanggalAkhirVouch.setText(tb);
-        Glide.with(this).load("http://10.0.2.2/TA-service/imagesResto/"+ "Banner" + vr.getKode_voucher() +".jpg").into(binding.imageView16);
+        Glide.with(this).load("https://github.com/FlorenciaNatasya/BackendTA/imagesResto/"+ "Banner" + vr.getKode_voucher() +".jpg").into(binding.imageView16);
 
         binding.imageViewEditTanggalAwalVoucher.setOnClickListener(new View.OnClickListener() {
             @Override
