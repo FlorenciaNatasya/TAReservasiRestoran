@@ -61,7 +61,7 @@ public class ListRegistrasiRestoranAdapter extends RecyclerView.Adapter<ListRegi
         }
 
         void bind(Restoran r){
-            Glide.with(ctx).load("http://10.0.2.2/TA-service/imagesResto/"+ r.getNama_restoran().replace(" ", "") + "BagianDepan" +".jpg").into(binding.imageView25);
+            Glide.with(ctx).load("https://github.com/FlorenciaNatasya/BackendTA/imagesResto/"+ r.getNama_restoran().replace(" ", "") + "BagianDepan" +".jpg").into(binding.imageView25);
             binding.textView102.setText(r.getNama_restoran());
             binding.textView103.setText(r.getAlamat_restoran() + ", " + r.getDaerah_restoran());
         }
