@@ -50,7 +50,7 @@ public class ListMakananTerpilihAdapter extends RecyclerView.Adapter<ListMakanan
         }
 
         void bind(DetailTransaksi dt){
-            Glide.with(ctx).load("http://10.0.2.2/TA-service/imagesMenu/"+ dt.getNama_makanan().replace(" ", "") + ".jpg").into(binding.imageViewMakananYangDipesan);
+            Glide.with(ctx).load("https://github.com/FlorenciaNatasya/BackendTA/imagesMenu/"+ dt.getNama_makanan().replace(" ", "") + ".jpg").into(binding.imageViewMakananYangDipesan);
             binding.textViewJumlahDanNamaMakanan.setText(dt.getJumlah_makanan() + "x " + dt.getNama_makanan());
             int total = Integer.parseInt(dt.getHarga_makanan()) * Integer.parseInt(dt.getJumlah_makanan());
             binding.textViewJumlahHarga.setText(formatRupiah(total));
