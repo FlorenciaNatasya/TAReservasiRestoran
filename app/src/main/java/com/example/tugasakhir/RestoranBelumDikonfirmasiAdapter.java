@@ -64,7 +64,7 @@ public class RestoranBelumDikonfirmasiAdapter extends RecyclerView.Adapter<Resto
             binding.textViewTotalHargaPesanan.setText("");
             binding.textViewNamaRestoYangDipesan.setText(restoran.getNama_restoran());
             binding.textViewKeteranganPesanan.setText(restoran.getAlamat_restoran());
-            Glide.with(ctx).load("http://reservasirestoran.me/imagesResto/"+ restoran.getNama_restoran().replace(" ", "") + "BagianDepan" +".jpg").into(binding.imageView13);
+            Glide.with(ctx).load("https://reservasirestoran.me/imagesResto/"+ restoran.getNama_restoran().replace(" ", "") + "BagianDepan" +".jpg").into(binding.imageView13);
         }
     }
 
