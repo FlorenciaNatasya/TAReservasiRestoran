@@ -60,7 +60,7 @@ public class ListMenuMakananAdapter extends RecyclerView.Adapter<ListMenuMakanan
         void bind(MenuMakanan menu){
             binding.textViewNamaMenu.setText(menu.getNama_menu());
             binding.textViewDeskripsiMenu.setText(menu.getDeskripsi_menu());
-            Glide.with(ctx).load("https://github.com/FlorenciaNatasya/BackendTA/imagesMenu/"+ menu.getNama_menu().replace(" ", "") + idresto +".jpg").into(binding.imageViewMenuMakanan);
+            Glide.with(ctx).load("https://reservasirestoran.me/imagesMenu/"+ menu.getNama_menu().replace(" ", "") + idresto +".jpg").into(binding.imageViewMenuMakanan);
             binding.textViewHargaMenu.setText(formatRupiah(Integer.parseInt(menu.getHarga_menu())));
 
             binding.buttonEditMenuMakanan.setOnClickListener(new View.OnClickListener() {
