@@ -107,7 +107,7 @@ public class Register extends AppCompatActivity {
                             if (role.equalsIgnoreCase("Customer")) {
                                 StringRequest stringRequest = new StringRequest(
                                         Request.Method.POST,
-                                        "http://10.0.2.2/TA-service/master.php",
+                                        getResources().getString(R.string.url),
                                         new Response.Listener<String>() {
                                             @Override
                                             public void onResponse(String response) {
